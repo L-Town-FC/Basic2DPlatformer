@@ -88,7 +88,6 @@ public class PhysicsObject : MonoBehaviour
                         currentNormal.x = 0;
                     }
                 }
-
               
 
                 float projection = Vector2.Dot(velocity,currentNormal); //getting difference between the velocity and current normal and determing whether we need to subtract from our velocity to stop object from entering a collider
