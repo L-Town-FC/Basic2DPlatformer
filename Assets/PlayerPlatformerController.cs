@@ -22,7 +22,7 @@ public class PlayerPlatformerController : PhysicsObject
         if (Input.GetButtonDown("Jump") && grounded) //lets player jump only when grounded
         {
             velocity.y = jumpTakeOffSpeed;
-
+         
         }else if (Input.GetButtonDown("Jump") && WallChecker()) { //checks if you are off the ground so you can initiate wall jump
             print("Wall jump");
         }else if (Input.GetButtonUp("Jump")) //lets player cancel jump. when player lets go of jump it reduces their vertical velocity by half until it is zero
