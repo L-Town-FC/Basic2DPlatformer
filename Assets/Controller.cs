@@ -12,6 +12,8 @@ public class Controller : MonoBehaviour
     public float jumpHeight = 4;
     float jumpVelocity;
     float maxSlopeHeight = 0.65f;
+    Vector2 groundNormal;
+    Vector2 moveDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +33,15 @@ public class Controller : MonoBehaviour
             if(contactPoints[i].normal.y > maxSlopeHeight)
             {
                 grounded = true;
+                groundNormal = contactPoints[i].normal;
+                Debug.DrawRay(contactPoints[i].point, new Vector2(groundNormal.y, -groundNormal.x), Color.red);
             }
 
             Debug.DrawRay(contactPoints[i].point, contactPoints[i].normal);
         }
+
         move.x = Input.GetAxisRaw("Horizontal");
+
         if (Input.GetButtonDown("Jump") && grounded)
         {
             jumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(Physics2D.gravity.magnitude * rb2d.gravityScale) * jumpHeight);
@@ -45,6 +51,17 @@ public class Controller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb2d.transform.Translate(move * speed* Time.deltaTime);
+        if (grounded)//if grounded additional checks are needed in case there is a slope
+        {
+            moveDirection = new Vector2(groundNormal.y, -groundNormal.x) * move.normalized;
+            moveDirection.x = groundNormal.y;
+            moveDirection.y = -groundNormal.x;
+        }
+        else
+        {
+            moveDirection = Vector2.right;
+        }
+        rb2d.transform.Translate(moveDirection * move.x * speed * Time.deltaTime);
+
     }
 }
