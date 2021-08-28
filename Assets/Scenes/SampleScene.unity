@@ -613,6 +613,7 @@ GameObject:
   - component: {fileID: 1185622484}
   - component: {fileID: 1185622483}
   - component: {fileID: 1185622488}
+  - component: {fileID: 1185622489}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -755,17 +756,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185622482}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4b221924ad666243bbcb01e6e1ab6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  jumpHeight: 4
-  neutralWallJumpAngle: 15
-  neutralWallJumpVelocity: 20
-  towardsWallJumpAngle: 60
-  towardsWallJumpVelocity: 20
+--- !u!114 &1185622489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185622482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39ca7af705cc6d46b38aa2120e3721e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1224093415
 GameObject:
   m_ObjectHideFlags: 0
